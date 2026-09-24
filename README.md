@@ -14,7 +14,7 @@ flowchart LR
 
 ## Installation
 
-Tested environment: Python **3.10.20**, PyTorch **2.6.0+cu124**, NumPy **1.26.4**, Windows, and an NVIDIA RTX 3090 (24 GB). Python 3.10 is recommended. NumPy is pinned below 2 because the augmentation pipeline uses imgaug 0.4.0.
+Tested environment: Python **3.10.20**, PyTorch **2.6.0+cu124**, NumPy **1.26.4**, Windows, and an NVIDIA RTX 3090 (24 GB). 
 
 From the repository root:
 
@@ -22,10 +22,6 @@ From the repository root:
 python -m pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124
 python -m pip install -r requirements.txt
 ```
-
-For CPU-only tests, replace the PyTorch index URL with `https://download.pytorch.org/whl/cpu`. Full training is intended for a CUDA GPU; CPU tests do not establish equivalent training speed or benchmark results. The PyTorch wheel includes the CUDA runtime; a separate CUDA toolkit is not needed for this code.
-
-All commands below run from the repository root. An editable package installation is optional: `python -m pip install -e .`. `requirements-lock-cu124-windows.txt` records the complete environment used for the original experiments, including some analysis-only packages; use it for that exact Windows/CUDA environment rather than as a universal cross-platform lock.
 
 ## Data
 
@@ -40,10 +36,6 @@ data/
 │   └── ground_truth/<defect>/*_mask.png
 └── dtd/images/<texture>/*.jpg
 ```
-
-Paths can be overridden on every training/evaluation command; there are no workstation-specific data paths in the public configs. Images use OpenCV **BGR**, resized to 256×256 and normalized to [0, 1]. Masks use nearest-neighbor resizing and binary labels.
-
-`configs/exp_split.json` fixes 33 validation and 50 held-out test images from the original 83 bottle test images, stratified by defect type with split seed 2026. The 209 normal training images are all used for training, and all 5,640 DTD textures are available for anomaly synthesis. Other categories require a different `--split-file`; a missing file is generated deterministically, and an incompatible existing split is rejected.
 
 ## Train
 
