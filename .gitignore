@@ -1,0 +1,33 @@
+# Environments and Python/build caches
+.venv*/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ruff_cache/
+.pytest_cache/
+build/
+dist/
+
+# Private data, local runs and model weights
+data/
+datasets/
+runs/
+checkpoints/
+saved_models/
+backups/
+*.pt
+*.pth
+*.pckl
+*.ckpt
+*.onnx
+*.log
+*.local.json
+.env
+.env.*
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
