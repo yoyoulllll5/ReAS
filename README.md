@@ -1,17 +1,6 @@
 # ReAS
 
 
-```mermaid
-flowchart LR
-    X[Input image] --> R[Reconstruction network]
-    X --> A[Dual-input attention encoder]
-    R -->|Reconstructed image| A
-    A --> D[Segmentation decoder]
-    D --> M[Anomaly probability map]
-    M --> P[21 x 21 average pooling + maximum]
-    P --> S[Image anomaly score]
-```
-
 ## Installation
 
 Tested environment: Python **3.10.20**, PyTorch **2.6.0+cu124**, NumPy **1.26.4**, Windows, and an NVIDIA RTX 3090 (24 GB). 
